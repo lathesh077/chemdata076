@@ -451,7 +451,7 @@ if selected_page == "About":
                 font-weight:800;
                 color:#087f9b;
                 margin:12px 0 5px;">
-                Lathesh B S
+                LUCKISH
             </div>
             <div class="muted">
                 College assignment · Chemistry Virtual Lab
