@@ -482,7 +482,7 @@ if selected_page == "About":
     )
 
     st.markdown("---")
-    st.caption("Chem Data · Developed by Lathesh B S")
+    st.caption("Chem Data · Developed by Luckish")
     st.stop()
 
 
