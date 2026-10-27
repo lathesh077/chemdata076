@@ -3,7 +3,7 @@ import streamlit.components.v1 as components
 import html
 
 st.set_page_config(
-    page_title="chemdata | Chemistry Virtual Lab",
+    page_title="Chem Data | Chemistry Virtual Lab",
     page_icon="⚗️",
     layout="wide",
     initial_sidebar_state="collapsed",
@@ -52,6 +52,75 @@ div[data-testid="stRadio"] label p { font-weight:700; }
 </style>
 """, unsafe_allow_html=True)
 
+# ---------- Main navigation ----------
+if "page" not in st.session_state:
+    st.session_state.page = "Virtual Lab"
+
+nav_left, nav_right = st.columns([1, 2])
+with nav_left:
+    st.markdown(
+        '<div style="font-family:Manrope,sans-serif;font-weight:800;font-size:22px;color:#123652;padding:8px 0">⚗️ Chem Data</div>',
+        unsafe_allow_html=True,
+    )
+with nav_right:
+    selected_page = st.radio(
+        "Main navigation",
+        ["Virtual Lab", "About"],
+        horizontal=True,
+        label_visibility="collapsed",
+        key="main_navigation",
+    )
+
+if selected_page == "About":
+    st.markdown("""
+    <div class="hero">
+      <div class="eyebrow">ABOUT THE PROJECT</div>
+      <h1>About Chem Data</h1>
+      <p>An interactive Chemistry Virtual Lab designed to make molecular structures and chemical concepts easier to explore.</p>
+    </div>
+    """, unsafe_allow_html=True)
+    st.write("")
+    st.markdown("""
+    <div class="panel">
+      <div class="panel-title">Project overview</div>
+      <p class="muted" style="font-size:14px;line-height:1.7">
+        Chem Data is a mobile-friendly educational website for exploring three molecules:
+        Methane, Ethanol and Benzene. It combines interactive 3D molecular models with
+        concise information about molecular formula, molar mass, geometry, bonding,
+        physical state, chemical properties and applications.
+      </p>
+    </div>
+    """, unsafe_allow_html=True)
+    st.write("")
+    about_left, about_right = st.columns([1, 1], gap="large")
+    with about_left:
+        st.markdown("""
+        <div class="panel">
+          <div class="panel-title">Developer</div>
+          <div style="font-family:Manrope,sans-serif;font-size:25px;font-weight:800;color:#087f9b;margin:12px 0 5px">Lathesh B S</div>
+          <div class="muted">College assignment · Chemistry Virtual Lab</div>
+          <p style="color:#48697d;line-height:1.7;margin-top:14px">
+            Created as a learning project to present chemistry concepts through a clear,
+            responsive and interactive interface.
+          </p>
+        </div>
+        """, unsafe_allow_html=True)
+    with about_right:
+        st.markdown("""
+        <div class="panel">
+          <div class="panel-title">Technology used</div>
+          <p style="color:#48697d;line-height:1.9;margin-top:12px">
+            <b>Python & Streamlit</b> — web app and interface<br>
+            <b>3Dmol.js</b> — interactive 3D molecule viewer<br>
+            <b>PubChem</b> — molecular structure source
+          </p>
+        </div>
+        """, unsafe_allow_html=True)
+    st.info("For educational use. Molecular structures are visual representations; always follow appropriate laboratory safety guidance.")
+    st.markdown("---")
+    st.caption("Chem Data · Developed by Lathesh B S")
+    st.stop()
+
 MOLECULES = {
     "Methane": {
         "cid": 297, "formula": "CH₄", "mass": "16.04 g/mol",
@@ -88,7 +157,7 @@ if "selected_molecule" not in st.session_state:
 st.markdown("""
 <div class="hero">
   <div class="eyebrow">CHEMISTRY • INTERACTIVE LEARNING</div>
-  <h1>Molecule Studio</h1>
+  <h1>Chem Data</h1>
   <p>A pocket-sized virtual lab to explore molecular shape, bonding and real-world chemistry. Select a molecule, then rotate and zoom its 3D structure.</p>
 </div>
 """, unsafe_allow_html=True)
@@ -192,9 +261,8 @@ with right:
 st.markdown("---")
 st.markdown("""
 <div style="display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px;color:#668395;font-size:12px">
-  <span>MOLECULE STUDIO · COLLEGE VIRTUAL LAB</span>
+  <span>CHEM DATA · COLLEGE VIRTUAL LAB</span>
   <span>Structure source: PubChem · Viewer: 3Dmol.js</span>
 </div>
 """, unsafe_allow_html=True)
 st.caption("Educational reference only. Molecular models are visual representations; they do not show electron density or molecular motion. Benzene is hazardous and should only be handled by trained personnel in appropriate facilities.")
-
