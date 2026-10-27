@@ -3,7 +3,7 @@ import streamlit.components.v1 as components
 import html
 
 st.set_page_config(
-    page_title="Molecule Studio | Chemistry Virtual Lab",
+    page_title="chemdata | Chemistry Virtual Lab",
     page_icon="⚗️",
     layout="wide",
     initial_sidebar_state="collapsed",
